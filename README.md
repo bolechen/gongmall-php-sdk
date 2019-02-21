@@ -1,7 +1,9 @@
-<h1 align="center"> gongmall-php-sdk </h1>
 
-<p align="center"> 工猫 sdk for php，非官方 官网文档参见：https://opendoc.gongmall.com.</p>
+# 工猫 sdk for php，非官方维护
 
+官网文档参见：https://opendoc.gongmall.com.</p>
+
+base on [foundation-sdk](https://github.com/HanSon/foundation-sdk)
 
 ## Installing
 

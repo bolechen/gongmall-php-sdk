@@ -1,6 +1,6 @@
 {
     "name": "bolechen\/gongmall-php-sdk",
-    "description": "工猫 sdk for php，非官方 官网文档参见：https:\/\/opendoc.gongmall.com",
+    "description": "工猫（gongmall.com）sdk for php，非官方支持。基于官网文档：https:\/\/opendoc.gongmall.com 实现",
     "license": "MIT",
     "authors": [
         {
