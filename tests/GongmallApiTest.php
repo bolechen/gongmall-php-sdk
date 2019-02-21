@@ -5,6 +5,9 @@ namespace Tests\Feature;
 use PHPUnit\Framework\TestCase;
 use Bolechen\Gongmall\Gongmall;
 
+$dotenv = \Dotenv\Dotenv::create(__DIR__);
+$dotenv->load();
+
 class GongmallApiTest extends TestCase
 {
     public $gongmall;
@@ -30,12 +33,12 @@ class GongmallApiTest extends TestCase
             ]
         ]);
 
-        $data['name'] = '陈伯乐';
-        $data['mobile'] = '18627022261';
+        $data['name'] = '张三';
+        $data['mobile'] = '18627000000';
         $data['workNumber'] = rand(1, 9999);
         $data['certificateType'] = 1;
-        $data['idNumber'] = '411423198309223537';
-        $data['identity'] = '411423198309223537';
+        $data['idNumber'] = '411423198309221234';
+        $data['identity'] = '411423198309221234';
 
         $this->data = $data;
     }
@@ -48,23 +51,22 @@ class GongmallApiTest extends TestCase
     public function testEmployee()
     {
         $data = $this->data;
-
         $url = $this->gongmall->employee->getContractUrl($data);
-        dump($url);
+        $this->assertStringStartsWith('https://contract-qa.gongmall.com/url_contract.html', $url);
 
         //查询电签结果
         $data2['name'] = $data['name'];
         $data2['mobile'] = $data['mobile'];
         $data2['identity'] = $data['idNumber'];
-        dump($data2);
-        dump($this->gongmall->employee->getContractStatus($data2));
+        $result = $this->gongmall->employee->getContractStatus($data2);
+        $this->assertArrayHasKey('success', $result);
 
         //修改员工银行卡
         $data3 = $data2;
         $data3['oldBankAccount'] = '6212253202006079587';
         $data3['newBankAccount'] = '6212253202006079587';
-        dump($data3);
-        dump($this->gongmall->employee->syncBankAccount($data3));
+        $result = $this->gongmall->employee->syncBankAccount($data3);
+        $this->assertArrayHasKey('success', $result);
     }
 
     public function testWithdraw()
@@ -75,12 +77,13 @@ class GongmallApiTest extends TestCase
         $data['requestId'] = time();
         $data['dateTime'] = date('YmdHis');
 
-        dump($data);
-        dump($this->gongmall->withdraw->getTaxInfo($data));
+        $result = $this->gongmall->withdraw->getTaxInfo($data);
+        $this->assertArrayHasKey('success', $result);
     }
 
     public function testCompany()
     {
-        dump($this->gongmall->company->getBalance());
+        $result = $this->gongmall->company->getBalance();
+        $this->assertArrayHasKey('success', $result);
     }
 }
