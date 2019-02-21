@@ -8,7 +8,9 @@
             "email": "avenger@php.net"
         }
     ],
-    "require": {},
+    "require": {
+        "hanson/foundation-sdk": "^3.0"
+    },
     "autoload": {
         "psr-4": {
             "Bolechen\\Gongmall\\": "src"
