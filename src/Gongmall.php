@@ -4,11 +4,29 @@ namespace Bolechen\Gongmall;
 
 use Hanson\Foundation\Foundation;
 
+/**
+ * Class Gongmall
+ * @package Bolechen\Gongmall
+ *
+ * @property \Bolechen\Gongmall\Employee    $employee
+ * @property \Bolechen\Gongmall\Withdraw    $withdraw
+ * @property \Bolechen\Gongmall\Company     $company
+ */
 class Gongmall extends Foundation
 {
-    public function __construct($config)
+    protected $providers = [
+        GongmallServiceProvider::class,
+    ];
+
+    /**
+     * API 请求
+     *
+     * @param string $uri
+     * @param array $params
+     * @return array
+     */
+    public function request($uri, $params = [])
     {
-        parent::__construct($config);
-        $this->employee = new Employee($this->getConfig());
+        return $this->api->request($uri, $params);
     }
 }

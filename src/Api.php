@@ -13,8 +13,10 @@ class Api extends AbstractAPI
     protected $apiKey;
     protected $apiSecret;
 
-    public function __construct(array $config)
+    public function __construct(Gongmall $app)
     {
+        $config = $app->getConfig();
+
         $this->apiKey = $config['apiKey'];
         $this->apiSecret = $config['apiSecret'];
         $this->contractUrl = $config['contractUrl'];
@@ -23,7 +25,7 @@ class Api extends AbstractAPI
         $this->apiUrl = $config['sandbox'] ? static::SANDBOX_API_URL : static::API_URL;
     }
 
-    public function request($uri, $params)
+    public function request($uri, $params = [])
     {
         $http = $this->getHttp();
 

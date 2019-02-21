@@ -25,4 +25,15 @@ class Employee extends Api
     {
         return $this->request('/api/employee/getContractStatus', $params);
     }
+
+    /**
+     * 修改员工银行卡
+     *
+     * @link https://opendoc.gongmall.com/shi-shi-ti-xian/xiu-gai-yin-hang-ka.html
+     * @return string
+     **/
+    public function syncBankAccount(array $params)
+    {
+        return $this->request('/api/employee/getContractStatus', $params);
+    }
 }
