@@ -30,7 +30,7 @@ class Api extends AbstractAPI
         $this->contractUrl = $config['contractUrl'];
 
         //沙盒环境
-        $this->apiUrl = $config['sandbox'] ? static::SANDBOX_API_URL : static::API_URL;
+        $this->apiUrl = (isset($config['sandbox']) && $config['sandbox']) ? static::SANDBOX_API_URL : static::API_URL;
     }
 
     public function request($uri, $params = [])

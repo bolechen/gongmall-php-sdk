@@ -1,12 +1,17 @@
 <?php
 
+/*
+ * This file is part of the bolechen/gongmall-php-sdk.
+ *
+ * (c) Bole Chen <avenger@php.net>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Tests\Feature;
 
-use PHPUnit\Framework\TestCase;
 use Bolechen\Gongmall\Gongmall;
-
-$dotenv = \Dotenv\Dotenv::create(__DIR__);
-$dotenv->load();
+use PHPUnit\Framework\TestCase;
 
 class GongmallApiTest extends TestCase
 {
@@ -17,21 +22,8 @@ class GongmallApiTest extends TestCase
     {
         parent::setUp();
 
-        $this->gongmall = new Gongmall([
-            'apiKey' => env('GONGMALL_API_KEY'),
-            'apiSecret' => env('GONGMALL_API_SECRET'),
-            'contractUrl' => env('GONGMALL_SIGN_URL'),
-
-            'debug' => false, // 输出日志
-            'sandbox' => true, //沙盒
-
-            'log' => [
-                'name' => 'gongmall',
-                'file' => __DIR__ .'gongmall.log',
-                'level'      => 'debug',
-                'permission' => 0777,
-            ]
-        ]);
+        $config = require 'config.php';
+        $this->gongmall = new Gongmall($config);
 
         $data['name'] = '张三';
         $data['mobile'] = '18627000000';
@@ -44,9 +36,7 @@ class GongmallApiTest extends TestCase
     }
 
     /**
-     * Employee Tests
-     *
-     * @return void
+     * Employee Tests.
      */
     public function testEmployee()
     {
