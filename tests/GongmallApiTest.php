@@ -8,7 +8,7 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace Tests\Feature;
+namespace Bolechen\Gongmall;
 
 use Bolechen\Gongmall\Gongmall;
 use PHPUnit\Framework\TestCase;
@@ -18,7 +18,7 @@ class GongmallApiTest extends TestCase
     public $gongmall;
     public $data = [];
 
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 
