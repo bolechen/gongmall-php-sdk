@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the bolechen/gongmall-php-sdk.
+ *
+ * (c) Bole Chen <avenger@php.net>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Bolechen\Gongmall;
 
 use Pimple\Container;
@@ -7,7 +15,6 @@ use Pimple\ServiceProviderInterface;
 
 class GongmallServiceProvider implements ServiceProviderInterface
 {
-
     /**
      * Registers services on the given container.
      *

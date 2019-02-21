@@ -1,13 +1,22 @@
 <?php
 
+/*
+ * This file is part of the bolechen/gongmall-php-sdk.
+ *
+ * (c) Bole Chen <avenger@php.net>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Bolechen\Gongmall;
 
 class Withdraw extends Api
 {
     /**
-     * 算税信息
+     * 算税信息.
      *
-     * @link https://opendoc.gongmall.com/suan-shui-xin-xi-cha-xun.html
+     * @see   https://opendoc.gongmall.com/suan-shui-xin-xi-cha-xun.html
+     *
      * @return string
      **/
     public function getTaxInfo(array $params)

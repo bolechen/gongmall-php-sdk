@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the bolechen/gongmall-php-sdk.
+ *
+ * (c) Bole Chen <avenger@php.net>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Bolechen\Gongmall;
 
 use Hanson\Foundation\AbstractAPI;
@@ -45,11 +53,12 @@ class Api extends AbstractAPI
 
     private function createNonceStr($length = 16)
     {
-        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        $str = "";
-        for ($i = 0; $i < $length; $i++) {
+        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $str = '';
+        for ($i = 0; $i < $length; ++$i) {
             $str .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
         }
+
         return $str;
     }
 
@@ -65,10 +74,10 @@ class Api extends AbstractAPI
     public function employeeEncrypt(array $data)
     {
         //data为AES加密数据
-        $plaintext  = urldecode(http_build_query($data));
+        $plaintext = urldecode(http_build_query($data));
 
         //加密key由配置的appKey与appSecret生成
-        $key = strtoupper(md5($this->apiKey . $this->apiSecret));
+        $key = strtoupper(md5($this->apiKey.$this->apiSecret));
 
         //偏移量
         $size = 16;
