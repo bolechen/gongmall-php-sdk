@@ -36,5 +36,13 @@ class GongmallServiceProvider implements ServiceProviderInterface
         $pimple['company'] = function ($pimple) {
             return new Company($pimple);
         };
+
+        $pimple['push'] = function ($pimple) {
+            return new Push(
+                $pimple->getConfig()['apiKey'],
+                $pimple->getConfig()['apiSecret'],
+                $pimple['request']
+            );
+        };
     }
 }
