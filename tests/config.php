@@ -10,7 +10,7 @@
 
 return [
     'apiKey' => 'a49048c8df010124fb9d758ead180d70',
-    'apiSecret' => 'a75168036eb82c4db9f4cd5294355e37',
+    'apiSecret' => '9f4cd5294355e37a75168036eb82c4db',
     'contractUrl' => 'https://contract-qa.gongmall.com/url_contract.html?companyId=qP3gZP&positionId=4Pmp2V',
 
     'debug' => false, // 输出日志

@@ -39,8 +39,6 @@ class Push extends Api
         }
 
         $this->checkSign($data);
-        $data['msg'] = json_decode(urldecode($data['msg']), true);
-
         return $data;
     }
 
