@@ -62,8 +62,23 @@ class Api extends AbstractAPI
         return $str;
     }
 
-    private function signature(array $paramArr)
+    /**
+     * 验签.
+     *
+     * @see https://opendoc.gongmall.com/overview/jie-kou-gui-fan.html
+     *
+     * @return string
+     **/
+    protected function signature(array $paramArr)
     {
+        //去除空参数，不参与签名
+        unset($paramArr['sign']);
+        foreach ($paramArr as $k => $v) {
+            if (!$v) {
+                unset($paramArr[$k]);
+            }
+        }
+
         ksort($paramArr);
         $paramArr['appSecret'] = $this->apiSecret;
         $paramStr = urldecode(http_build_query($paramArr));
@@ -71,7 +86,14 @@ class Api extends AbstractAPI
         return strtoupper(md5($paramStr));
     }
 
-    public function employeeEncrypt(array $data)
+    /**
+     * 生成电签地址签名.
+     *
+     * @see https://opendoc.gongmall.com/dian-qian-he-tong/jie-ru-zhi-nan.html
+     *
+     * @return string
+     **/
+    protected function employeeEncrypt(array $data)
     {
         //data为AES加密数据
         $plaintext = urldecode(http_build_query($data));

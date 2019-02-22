@@ -12,6 +12,7 @@ namespace Bolechen\Gongmall;
 
 use Bolechen\Gongmall\Gongmall;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpFoundation\Request;
 
 class GongmallApiTest extends TestCase
 {
@@ -75,5 +76,14 @@ class GongmallApiTest extends TestCase
     {
         $result = $this->gongmall->company->getBalance();
         $this->assertArrayHasKey('success', $result);
+    }
+
+    public function testPush()
+    {
+        $callback_str = 'appKey=58ead180d70a49048c8df010124fb9d7&bankName=%E4%B8%AD%E5%9B%BD%E5%B7%A5%E5%95%86%E9%93%B6%E8%A1%8C&extraParam=&identity=411423198309223537&mobile=18627022261&name=%E9%99%88%E4%BC%AF%E4%B9%90&nonce=f8d4a31e391f4fffabfb785d5cdc44e1&salaryAccount=6212253202006079587&sign=F579ADB9A1C9F40FA8FDD6801306B0B1&status=2&timestamp=1550055394039&workNumber=8096';
+        parse_str($callback_str, $post);
+
+        $result = $this->gongmall->push->parse($post);
+        dd($result);
     }
 }
