@@ -1,7 +1,10 @@
-
 # 工猫 sdk for php，非官方维护
 
- 工猫（gongmall.com）官网文档参见：https://opendoc.gongmall.com.
+[![Build Status](https://travis-ci.org/bolechen/gongmall-php-sdk.svg?branch=master)](https://travis-ci.org/bolechen/gongmall-php-sdk)
+[![Latest Stable Version](https://poser.pugx.org/bolechen/gongmall-php-sdk/v/stable)](https://packagist.org/packages/bolechen/gongmall-php-sdk)
+[![License](https://poser.pugx.org/bolechen/gongmall-php-sdk/license)](https://packagist.org/packages/bolechen/gongmall-php-sdk)
+
+工猫（gongmall.com）官网文档参见：https://opendoc.gongmall.com
 
 - Base on [hanson/foundation-sdk](https://github.com/HanSon/foundation-sdk) 
 - 仅实现了几个常用功能，如需要增加功能，可以参考 Employee.php 自行扩展，欢迎 PR
