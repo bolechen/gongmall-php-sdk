@@ -90,19 +90,20 @@ class GongmallApiTest extends TestCase
     public function testPush()
     {
         //回调示例
-        $callback_str = 'appKey=58ead180d70a49048c8df010124fb9d7&bankName=%E4%B8%AD%E5%9B%BD%E5%B7%A5%E5%95%86%E9%93%B6%E8%A1%8C&extraParam=&identity=411423198309221234&mobile=18627000000&name=%E9%99%88%E4%BC%AF%E4%B9%90&nonce=f8d4a31e391f4fffabfb785d5cdc44e1&salaryAccount=6212253202006079587&sign=xxx&status=2&timestamp=1550055394039&workNumber=8096';
-        parse_str($callback_str, $post);
-
-        $this->expectException(\Exception::class);
-        $result = $this->gongmall->push->parse($post);
-
-        //回调示例
         $callback_str = 'appKey=58ead180d70a49048c8df010124fb9d7&bankName=%E4%B8%AD%E5%9B%BD%E5%B7%A5%E5%95%86%E9%93%B6%E8%A1%8C&extraParam=&identity=411423198309221234&mobile=18627000000&name=%E9%99%88%E4%BC%AF%E4%B9%90&nonce=f8d4a31e391f4fffabfb785d5cdc44e1&salaryAccount=6212253202006079587&sign=F2142A0AD77796FAC3328625AC8CCE38&status=2&timestamp=1550055394039&workNumber=8096';
-        parse_str($callback_str, $post);
-
-        $result = $this->gongmall->push->parse($post);
+        $result = $this->gongmall->push->parse($callback_str);
+        // dump($result);
 
         $this->assertArrayHasKey('appKey', $result);
         $this->assertArrayHasKey('sign', $result);
+    }
+
+    public function testPushHasException()
+    {
+        //回调示例
+        $callback_str = 'appKey=58ead180d70a49048c8df010124fb9d7&bankName=%E4%B8%AD%E5%9B%BD%E5%B7%A5%E5%95%86%E9%93%B6%E8%A1%8C&extraParam=&identity=411423198309221234&mobile=18627000000&name=%E9%99%88%E4%BC%AF%E4%B9%90&nonce=f8d4a31e391f4fffabfb785d5cdc44e1&salaryAccount=6212253202006079587&sign=xxx&status=2&timestamp=1550055394039&workNumber=8096';
+
+        $this->expectException(\Exception::class);
+        $result = $this->gongmall->push->parse($callback_str);
     }
 }

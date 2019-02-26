@@ -32,13 +32,19 @@ class Push extends Api
      *
      * @throws Exception
      */
-    public function parse($data = null)
+    public function parse($postRaw = null)
     {
-        if (!$data) {
-            $data = json_decode($this->request->getContent(), true);
+        if (!$postRaw) {
+            $postRaw = $this->request->getContent();
+        }
+
+        parse_str($postRaw, $data);
+        if (!is_array($data)) {
+            throw new \Exception('数据不正确');
         }
 
         $this->checkSign($data);
+
         return $data;
     }
 
@@ -46,7 +52,7 @@ class Push extends Api
     {
         $sign = $this->signature($data);
 
-        if ($sign != $data['sign']) {
+        if (!isset($data['sign']) || $sign != $data['sign']) {
             throw new \Exception('签名不正确');
         }
     }
