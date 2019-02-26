@@ -32,13 +32,15 @@ class Push extends Api
      *
      * @throws Exception
      */
-    public function parse($data = null)
+    public function parse($postRaw = null)
     {
-        if (!$data) {
-            $data = json_decode($this->request->getContent(), true);
+        if (!$postRaw) {
+            $postRaw = $this->request->getContent();
         }
 
+        parse_str($postRaw, $data);
         $this->checkSign($data);
+
         return $data;
     }
 
