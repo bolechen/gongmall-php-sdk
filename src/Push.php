@@ -39,6 +39,10 @@ class Push extends Api
         }
 
         parse_str($postRaw, $data);
+        if (!is_array($data)) {
+            throw new \Exception('数据不正确');
+        }
+
         $this->checkSign($data);
 
         return $data;
@@ -48,7 +52,7 @@ class Push extends Api
     {
         $sign = $this->signature($data);
 
-        if ($sign != $data['sign']) {
+        if (!isset($data['sign']) || $sign != $data['sign']) {
             throw new \Exception('签名不正确');
         }
     }
