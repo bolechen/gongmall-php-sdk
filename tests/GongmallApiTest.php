@@ -48,6 +48,7 @@ class GongmallApiTest extends TestCase
         $data2['mobile'] = $data['mobile'];
         $data2['identity'] = $data['idNumber'];
         $result = $this->gongmall->employee->getContractStatus($data2);
+
         $this->assertArrayHasKey('success', $result);
 
         //修改员工银行卡

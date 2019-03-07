@@ -2,12 +2,10 @@
     "name": "bolechen\/gongmall-php-sdk",
     "description": "工猫（gongmall.com）sdk for php，非官方支持。基于官网文档：https:\/\/opendoc.gongmall.com 实现",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Bole Chen",
-            "email": "avenger@php.net"
-        }
-    ],
+    "authors": [{
+        "name": "Bole Chen",
+        "email": "avenger@php.net"
+    }],
     "require": {
         "hanson/foundation-sdk": "^3.0"
     },
@@ -18,5 +16,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "~7.0"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     }
 }

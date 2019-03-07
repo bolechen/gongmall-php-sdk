@@ -44,7 +44,6 @@ class Api extends AbstractAPI
         $protocol = $params;
         $protocol['sign'] = $this->signature($params);
 
-        // dump($protocol);
         $response = $http->post($this->apiUrl.$uri, $protocol);
         $result = json_decode($response->getBody(), true);
 
