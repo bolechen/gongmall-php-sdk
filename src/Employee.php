@@ -45,6 +45,6 @@ class Employee extends Api
      **/
     public function syncBankAccount(array $params)
     {
-        return $this->request('/api/employee/getContractStatus', $params);
+        return $this->request('/api/employee/syncBankAccount', $params);
     }
 }

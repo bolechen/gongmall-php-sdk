@@ -11,8 +11,8 @@
 
 ## Installing
 
-```shell
-$ composer require bolechen/gongmall-php-sdk -vvv
+```bash
+composer require bolechen/gongmall-php-sdk -vvv
 ```
 
 ## Usage
@@ -46,6 +46,12 @@ $result = $gongmall->employee->getContractStatus($array);
 $result = $gongmall->company->getBalance();
 ```
 
+## Test
+
+```bash
+composer test
+```
+
 ## License
 
-MIT
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
