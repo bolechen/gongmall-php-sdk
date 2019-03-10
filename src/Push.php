@@ -28,9 +28,9 @@ class Push extends Api
     }
 
     /**
-     * @return Response|array
-     *
      * @throws Exception
+     *
+     * @return Response|array
      */
     public function parse($postRaw = null)
     {
