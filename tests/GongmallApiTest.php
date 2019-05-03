@@ -43,7 +43,7 @@ class GongmallApiTest extends TestCase
         $url = $this->gongmall->employee->getContractUrl($data);
         $this->assertStringStartsWith('https://contract-qa.gongmall.com/url_contract.html', $url);
 
-        //查询电签结果
+        // 查询电签结果
         $data2['name'] = $data['name'];
         $data2['mobile'] = $data['mobile'];
         $data2['identity'] = $data['idNumber'];
@@ -51,8 +51,10 @@ class GongmallApiTest extends TestCase
 
         $this->assertArrayHasKey('success', $result);
 
-        //修改员工银行卡
+        // 修改员工银行卡
         $data3 = $data2;
+        $data3['oldBankName'] = '工商银行';
+        $data3['newBankName'] = '农业银行';
         $data3['oldBankAccount'] = '6212253202006079587';
         $data3['newBankAccount'] = '6212253202006079587';
         $result = $this->gongmall->employee->syncBankAccount($data3);
@@ -90,10 +92,9 @@ class GongmallApiTest extends TestCase
      */
     public function testPush()
     {
-        //回调示例
+        // 回调示例
         $callback_str = 'appKey=58ead180d70a49048c8df010124fb9d7&bankName=%E4%B8%AD%E5%9B%BD%E5%B7%A5%E5%95%86%E9%93%B6%E8%A1%8C&extraParam=&identity=411423198309221234&mobile=18627000000&name=%E9%99%88%E4%BC%AF%E4%B9%90&nonce=f8d4a31e391f4fffabfb785d5cdc44e1&salaryAccount=6212253202006079587&sign=F2142A0AD77796FAC3328625AC8CCE38&status=2&timestamp=1550055394039&workNumber=8096';
         $result = $this->gongmall->push->parse($callback_str);
-        // dump($result);
 
         $this->assertArrayHasKey('appKey', $result);
         $this->assertArrayHasKey('sign', $result);
@@ -101,7 +102,7 @@ class GongmallApiTest extends TestCase
 
     public function testPushHasException()
     {
-        //回调示例
+        // 回调示例
         $callback_str = 'appKey=58ead180d70a49048c8df010124fb9d7&bankName=%E4%B8%AD%E5%9B%BD%E5%B7%A5%E5%95%86%E9%93%B6%E8%A1%8C&extraParam=&identity=411423198309221234&mobile=18627000000&name=%E9%99%88%E4%BC%AF%E4%B9%90&nonce=f8d4a31e391f4fffabfb785d5cdc44e1&salaryAccount=6212253202006079587&sign=xxx&status=2&timestamp=1550055394039&workNumber=8096';
 
         $this->expectException(\Exception::class);
