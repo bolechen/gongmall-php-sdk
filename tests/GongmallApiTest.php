@@ -12,6 +12,10 @@ namespace Bolechen\Gongmall;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class GongmallApiTest extends TestCase
 {
     public $gongmall;

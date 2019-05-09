@@ -15,7 +15,6 @@ use Hanson\Foundation\Foundation;
 /**
  * Class Gongmall.
  *
- *
  * @property \Bolechen\Gongmall\Employee $employee
  * @property \Bolechen\Gongmall\Withdraw $withdraw
  * @property \Bolechen\Gongmall\Company  $company

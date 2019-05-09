@@ -17,8 +17,8 @@ class Company extends Api
      *
      * @see   https://opendoc.gongmall.com/shi-shi-ti-xian/cha-xun-qi-ye-yu-e.html
      *
-     * @return string
-     **/
+     * @return array
+     */
     public function getBalance()
     {
         return $this->request('/api/company/getBalance');

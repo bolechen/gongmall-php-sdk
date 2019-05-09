@@ -16,10 +16,10 @@ class Api extends AbstractAPI
 {
     const API_URL = 'https://openapi.gongmall.com';
     const SANDBOX_API_URL = 'https://openapi-qa.gongmall.com';
-
-    private $url;
     protected $apiKey;
     protected $apiSecret;
+
+    private $url;
 
     public function __construct(Gongmall $app)
     {
@@ -33,6 +33,12 @@ class Api extends AbstractAPI
         $this->apiUrl = (isset($config['sandbox']) && $config['sandbox']) ? static::SANDBOX_API_URL : static::API_URL;
     }
 
+    /**
+     * @param string $uri
+     * @param array  $params
+     *
+     * @return array
+     */
     public function request($uri, $params = [])
     {
         $http = $this->getHttp();
@@ -45,20 +51,8 @@ class Api extends AbstractAPI
         $protocol['sign'] = $this->signature($params);
 
         $response = $http->post($this->apiUrl.$uri, $protocol);
-        $result = json_decode($response->getBody(), true);
 
-        return $result;
-    }
-
-    private function createNonceStr($length = 16)
-    {
-        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $str = '';
-        for ($i = 0; $i < $length; $i++) {
-            $str .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
-        }
-
-        return $str;
+        return json_decode($response->getBody(), true);
     }
 
     /**
@@ -67,7 +61,7 @@ class Api extends AbstractAPI
      * @see https://opendoc.gongmall.com/overview/jie-kou-gui-fan.html
      *
      * @return string
-     **/
+     */
     protected function signature(array $paramArr)
     {
         //去除空参数，不参与签名
@@ -91,27 +85,36 @@ class Api extends AbstractAPI
      * @see https://opendoc.gongmall.com/dian-qian-he-tong/jie-ru-zhi-nan.html
      *
      * @return string
-     **/
+     */
     protected function employeeEncrypt(array $data)
     {
-        //data为AES加密数据
+        // data为AES加密数据
         $plaintext = urldecode(http_build_query($data));
 
-        //加密key由配置的appKey与appSecret生成
+        // 加密key由配置的appKey与appSecret生成
         $key = strtoupper(md5($this->apiKey.$this->apiSecret));
 
-        //偏移量
+        // 偏移量
         $size = 16;
         $iv = str_repeat("\0", $size);
 
-        // 添加Padding，使用//PKCS5Padding
+        // 添加Padding，使用 //PKCS5Padding
         $padding = $size - strlen($plaintext) % $size;
         $plaintext .= str_repeat(chr($padding), $padding);
 
-        //使用AES-192-CBC进行加密
-        $encrypted = openssl_encrypt($plaintext, 'AES-192-CBC', base64_decode($key), OPENSSL_RAW_DATA | OPENSSL_ZERO_PADDING, $iv);
+        // 使用AES-192-CBC进行加密
+        return openssl_encrypt($plaintext, 'AES-192-CBC', base64_decode($key), OPENSSL_RAW_DATA | OPENSSL_ZERO_PADDING, $iv);
+        // 加密结果
+    }
 
-        //加密结果
-        return $encrypted;
+    private function createNonceStr($length = 16)
+    {
+        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $str = '';
+        for ($i = 0; $i < $length; ++$i) {
+            $str .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
+        }
+
+        return $str;
     }
 }

@@ -18,7 +18,7 @@ class Employee extends Api
      * @see   https://opendoc.gongmall.com/dian-qian-he-tong/jie-ru-zhi-nan.html
      *
      * @return string
-     **/
+     */
     public function getContractUrl(array $params)
     {
         return $this->contractUrl.'&data='.base64_encode($this->employeeEncrypt($params));
@@ -29,8 +29,8 @@ class Employee extends Api
      *
      * @see   https://opendoc.gongmall.com/dian-qian-he-tong/cha-xun-dian-qian-jie-guo.html
      *
-     * @return string
-     **/
+     * @return array
+     */
     public function getContractStatus(array $params)
     {
         return $this->request('/api/employee/getContractStatus', $params);
@@ -41,8 +41,8 @@ class Employee extends Api
      *
      * @see   https://opendoc.gongmall.com/shi-shi-ti-xian/xiu-gai-yin-hang-ka.html
      *
-     * @return string
-     **/
+     * @return array
+     */
     public function syncBankAccount(array $params)
     {
         return $this->request('/api/employee/syncBankAccount', $params);

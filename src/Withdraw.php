@@ -17,8 +17,8 @@ class Withdraw extends Api
      *
      * @see   https://opendoc.gongmall.com/suan-shui-xin-xi-cha-xun.html
      *
-     * @return string
-     **/
+     * @return array
+     */
     public function getTaxInfo(array $params)
     {
         return $this->request('/api/withdraw/getTaxInfo', $params);
