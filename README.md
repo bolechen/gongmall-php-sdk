@@ -2,6 +2,7 @@
 
 [![codecov](https://codecov.io/gh/bolechen/gongmall-php-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/bolechen/gongmall-php-sdk)
 [![Build Status](https://travis-ci.org/bolechen/gongmall-php-sdk.svg?branch=master)](https://travis-ci.org/bolechen/gongmall-php-sdk)
+[![StyleCI](https://github.styleci.io/repos/171791114/shield?branch=master)](https://github.styleci.io/repos/171791114)
 [![Latest Stable Version](https://poser.pugx.org/bolechen/gongmall-php-sdk/v/stable)](https://packagist.org/packages/bolechen/gongmall-php-sdk)
 [![License](https://poser.pugx.org/bolechen/gongmall-php-sdk/license)](https://packagist.org/packages/bolechen/gongmall-php-sdk)
 
