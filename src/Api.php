@@ -16,8 +16,10 @@ class Api extends AbstractAPI
 {
     const API_URL = 'https://openapi.gongmall.com';
     const SANDBOX_API_URL = 'https://openapi-qa.gongmall.com';
+
     protected $apiKey;
     protected $apiSecret;
+    protected $contractUrl;
 
     private $url;
 
