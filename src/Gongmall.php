@@ -18,6 +18,7 @@ use Hanson\Foundation\Foundation;
  * @property \Bolechen\Gongmall\Employee $employee
  * @property \Bolechen\Gongmall\Withdraw $withdraw
  * @property \Bolechen\Gongmall\Company  $company
+ * @property \Bolechen\Gongmall\Push     $push
  */
 class Gongmall extends Foundation
 {
