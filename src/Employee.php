@@ -17,7 +17,7 @@ class Employee extends Api
      *
      * @see   https://opendoc.gongmall.com/dian-qian-he-tong/jie-ru-zhi-nan.html
      *
-     * @param  array  $params
+     * @param array $params
      *
      * @return string
      */
@@ -31,7 +31,7 @@ class Employee extends Api
      *
      * @see   https://opendoc.gongmall.com/dian-qian-he-tong/cha-xun-dian-qian-jie-guo.html
      *
-     * @param  array  $params
+     * @param array $params
      *
      * @return array
      *
@@ -47,7 +47,7 @@ class Employee extends Api
      *
      * @see   https://opendoc.gongmall.com/dian-qian-he-tong/cha-xun-dian-qian-jie-guo-v2.html
      *
-     * @param  array  $params
+     * @param array $params
      *
      * @return array
      */
@@ -61,7 +61,7 @@ class Employee extends Api
      *
      * @see   https://opendoc.gongmall.com/shi-shi-ti-xian/xiu-gai-yin-hang-ka.html
      *
-     * @param  array  $params
+     * @param array $params
      *
      * @return array
      */

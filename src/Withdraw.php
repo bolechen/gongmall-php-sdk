@@ -17,7 +17,7 @@ class Withdraw extends Api
      *
      * @see   https://opendoc.gongmall.com/suan-shui-xin-xi-cha-xun.html
      *
-     * @param  array  $params
+     * @param array $params
      *
      * @return array
      */

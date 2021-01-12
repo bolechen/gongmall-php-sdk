@@ -17,8 +17,8 @@ use Hanson\Foundation\Foundation;
  *
  * @property Employee $employee
  * @property Withdraw $withdraw
- * @property Company $company
- * @property Push $push
+ * @property Company  $company
+ * @property Push     $push
  */
 class Gongmall extends Foundation
 {
@@ -29,8 +29,8 @@ class Gongmall extends Foundation
     /**
      * API 请求
      *
-     * @param  string  $uri
-     * @param  array  $params
+     * @param string $uri
+     * @param array  $params
      *
      * @return array
      */
