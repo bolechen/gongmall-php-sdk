@@ -15,10 +15,10 @@ use Hanson\Foundation\Foundation;
 /**
  * Class Gongmall.
  *
- * @property \Bolechen\Gongmall\Employee $employee
- * @property \Bolechen\Gongmall\Withdraw $withdraw
- * @property \Bolechen\Gongmall\Company  $company
- * @property \Bolechen\Gongmall\Push     $push
+ * @property Employee $employee
+ * @property Withdraw $withdraw
+ * @property Company $company
+ * @property Push $push
  */
 class Gongmall extends Foundation
 {
@@ -29,12 +29,12 @@ class Gongmall extends Foundation
     /**
      * API 请求
      *
-     * @param string $uri
-     * @param array  $params
+     * @param  string  $uri
+     * @param  array  $params
      *
      * @return array
      */
-    public function request($uri, $params = [])
+    public function request(string $uri, $params = []): array
     {
         return $this->api->request($uri, $params);
     }

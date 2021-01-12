@@ -19,7 +19,7 @@ class Company extends Api
      *
      * @return array
      */
-    public function getBalance()
+    public function getBalance(): array
     {
         return $this->request('/api/company/getBalance');
     }

@@ -14,40 +14,43 @@ use Hanson\Foundation\AbstractAPI;
 
 class Api extends AbstractAPI
 {
-    const API_URL = 'https://openapi.gongmall.com';
-    const SANDBOX_API_URL = 'https://openapi-qa.gongmall.com';
+    protected $app;
+
+    public const API_URL = 'https://openapi.gongmall.com';
+    public const SANDBOX_API_URL = 'https://openapi-qa.gongmall.com';
 
     protected $apiKey;
     protected $apiSecret;
     protected $contractUrl;
-
-    private $url;
+    private $apiUrl;
 
     public function __construct(Gongmall $app)
     {
+        $this->app = $app;
         $config = $app->getConfig();
 
         $this->apiKey = $config['apiKey'];
         $this->apiSecret = $config['apiSecret'];
         $this->contractUrl = $config['contractUrl'];
 
-        //沙盒环境
+        // 沙盒环境
         $this->apiUrl = (isset($config['sandbox']) && $config['sandbox']) ? static::SANDBOX_API_URL : static::API_URL;
     }
 
     /**
-     * @param string $uri
-     * @param array  $params
+     * @param  string  $uri
+     * @param  array  $params
      *
      * @return array
+     * @throws \JsonException
      */
-    public function request($uri, $params = [])
+    public function request(string $uri, $params = []): array
     {
         $http = $this->getHttp();
 
         $params['appKey'] = $this->apiKey;
         $params['nonce'] = $this->createNonceStr();
-        $params['timestamp'] = strval(microtime(true) * 10000);
+        $params['timestamp'] = (string) (microtime(true) * 10000);
 
         $protocol = $params;
         $protocol['sign'] = $this->signature($params);
@@ -62,9 +65,11 @@ class Api extends AbstractAPI
      *
      * @see https://opendoc.gongmall.com/overview/jie-kou-gui-fan.html
      *
+     * @param  array  $paramArr
+     *
      * @return string
      */
-    protected function signature(array $paramArr)
+    protected function signature(array $paramArr): string
     {
         //去除空参数，不参与签名
         unset($paramArr['sign']);
@@ -86,9 +91,11 @@ class Api extends AbstractAPI
      *
      * @see https://opendoc.gongmall.com/dian-qian-he-tong/jie-ru-zhi-nan.html
      *
+     * @param  array  $data
+     *
      * @return string
      */
-    protected function employeeEncrypt(array $data)
+    protected function employeeEncrypt(array $data): string
     {
         // data为AES加密数据
         $plaintext = urldecode(http_build_query($data));
@@ -109,12 +116,12 @@ class Api extends AbstractAPI
         // 加密结果
     }
 
-    private function createNonceStr($length = 16)
+    private function createNonceStr($length = 16): string
     {
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $str = '';
         for ($i = 0; $i < $length; $i++) {
-            $str .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
+            $str .= $chars[random_int(0, strlen($chars) - 1)];
         }
 
         return $str;

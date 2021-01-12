@@ -23,7 +23,7 @@ class GongmallServiceProvider implements ServiceProviderInterface
      *
      * @param Container $pimple A container instance
      */
-    public function register(Container $pimple)
+    public function register(Container $pimple): void
     {
         $pimple['employee'] = function ($pimple) {
             return new Employee($pimple);
@@ -38,11 +38,7 @@ class GongmallServiceProvider implements ServiceProviderInterface
         };
 
         $pimple['push'] = function ($pimple) {
-            return new Push(
-                $pimple->getConfig()['apiKey'],
-                $pimple->getConfig()['apiSecret'],
-                $pimple['request']
-            );
+            return new Push($pimple);
         };
     }
 }

@@ -15,7 +15,7 @@ return [
     'contractUrl' => 'https://contract-qa.gongmall.com/url_contract.html?companyId=qP3gZP&positionId=4Pmp2V',
 
     'debug'   => true, // 输出日志
-    'sandbox' => true, //沙盒
+    'sandbox' => true, // 沙盒
 
     'log' => [
         'name'       => 'gongmall',
