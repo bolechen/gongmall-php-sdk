@@ -1,10 +1,10 @@
 # 工猫 sdk for php，非官方维护
 
-[![Build Status](https://travis-ci.org/bolechen/gongmall-php-sdk.svg?branch=master)](https://travis-ci.org/bolechen/gongmall-php-sdk)
+[![Build Status](https://github.com/bolechen/gongmall-php-sdk/workflows/PHP%20Composer/badge.svg)](https://github.com/bolechen/gongmall-php-sdk/actions)
 [![StyleCI](https://github.styleci.io/repos/171791114/shield?branch=master)](https://github.styleci.io/repos/171791114)
-![Packagist Downloads](https://img.shields.io/packagist/dt/bolechen/gongmall-php-sdk)
-![Packagist Version](https://img.shields.io/packagist/v/bolechen/gongmall-php-sdk)
-![GitHub](https://img.shields.io/github/license/bolechen/gongmall-php-sdk)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/bolechen/gongmall-php-sdk)](https://packagist.org/packages/bolechen/gongmall-php-sdk)
+[![Packagist Version](https://img.shields.io/packagist/v/bolechen/gongmall-php-sdk)](https://packagist.org/packages/bolechen/gongmall-php-sdk)
+[![GitHub](https://img.shields.io/github/license/bolechen/gongmall-php-sdk)](https://github.com/bolechen/gongmall-php-sdk)
 
 工猫（gongmall.com）官网文档参见：https://opendoc.gongmall.com
 
