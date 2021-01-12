@@ -38,11 +38,12 @@ class Api extends AbstractAPI
     }
 
     /**
-     * @param  string  $uri
-     * @param  array  $params
+     * @param string $uri
+     * @param array  $params
+     *
+     * @throws \JsonException
      *
      * @return array
-     * @throws \JsonException
      */
     public function request(string $uri, $params = []): array
     {
@@ -65,7 +66,7 @@ class Api extends AbstractAPI
      *
      * @see https://opendoc.gongmall.com/overview/jie-kou-gui-fan.html
      *
-     * @param  array  $paramArr
+     * @param array $paramArr
      *
      * @return string
      */
@@ -91,7 +92,7 @@ class Api extends AbstractAPI
      *
      * @see https://opendoc.gongmall.com/dian-qian-he-tong/jie-ru-zhi-nan.html
      *
-     * @param  array  $data
+     * @param array $data
      *
      * @return string
      */
