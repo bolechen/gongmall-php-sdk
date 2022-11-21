@@ -8,7 +8,7 @@
     }],
     "require": {
         "php": "^7.2",
-        "hanson/foundation-sdk": "3.0.*|^4.0.3",
+        "hanson/foundation-sdk": "3.0.*|^4.0.3|^5.0|dev-master",
         "ext-json": "*",
         "ext-openssl": "*"
     },
