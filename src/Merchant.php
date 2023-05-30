@@ -17,8 +17,9 @@ class Merchant extends Api
      *
      * @see https://opendoc.gongmall.com/merchant/merchant-account/cha-xun-qi-ye-yu-e-merchant.html
      *
-     * @return array
      * @throws \JsonException
+     *
+     * @return array
      */
     public function queryBalance(): array
     {

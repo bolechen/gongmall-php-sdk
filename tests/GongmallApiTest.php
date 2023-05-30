@@ -45,6 +45,7 @@ class GongmallApiTest extends TestCase
 
     /**
      * Employee Tests.
+     *
      * @throws \JsonException
      */
     public function testEmployee(): void
@@ -91,6 +92,7 @@ class GongmallApiTest extends TestCase
 
     /**
      * Merchant Tests.
+     *
      * @throws \JsonException
      */
     public function testMerchant(): void
