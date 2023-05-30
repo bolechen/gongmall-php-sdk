@@ -17,7 +17,7 @@ use Hanson\Foundation\Foundation;
  *
  * @property Employee $employee
  * @property Withdraw $withdraw
- * @property Company  $company
+ * @property Merchant  $company
  * @property Push     $push
  */
 class Gongmall extends Foundation

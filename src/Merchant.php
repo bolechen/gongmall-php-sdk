@@ -10,7 +10,7 @@
 
 namespace Bolechen\Gongmall;
 
-class Company extends Api
+class Merchant extends Api
 {
     /**
      * 查询企业当前余额.

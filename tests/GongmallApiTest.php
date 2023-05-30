@@ -23,6 +23,9 @@ class GongmallApiTest extends TestCase
     public $gongmall;
     public $data = [];
 
+    /**
+     * @throws \Exception
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -87,12 +90,12 @@ class GongmallApiTest extends TestCase
     }
 
     /**
-     * Company Tests.
+     * Merchant Tests.
      * @throws \JsonException
      */
-    public function testCompany(): void
+    public function testMerchant(): void
     {
-        $result = $this->gongmall->company->queryBalance();
+        $result = $this->gongmall->merchant->queryBalance();
         self::assertArrayHasKey('success', $result);
     }
 
