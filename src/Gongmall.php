@@ -16,9 +16,9 @@ use Hanson\Foundation\Foundation;
  * Class Gongmall.
  *
  * @property Employee $employee
- * @property Withdraw $withdraw
- * @property Company  $company
+ * @property Merchant $merchant
  * @property Push     $push
+ * @property Api      $api
  */
 class Gongmall extends Foundation
 {
@@ -34,7 +34,7 @@ class Gongmall extends Foundation
      *
      * @return array
      */
-    public function request(string $uri, $params = []): array
+    public function request(string $uri, array $params = []): array
     {
         return $this->api->request($uri, $params);
     }

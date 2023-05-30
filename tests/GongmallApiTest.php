@@ -15,6 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class GongmallApiTest extends TestCase
@@ -22,6 +23,9 @@ class GongmallApiTest extends TestCase
     public $gongmall;
     public $data = [];
 
+    /**
+     * @throws \Exception
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -41,6 +45,8 @@ class GongmallApiTest extends TestCase
 
     /**
      * Employee Tests.
+     *
+     * @throws \JsonException
      */
     public function testEmployee(): void
     {
@@ -56,42 +62,42 @@ class GongmallApiTest extends TestCase
         $result = $this->gongmall->employee->getContractStatus($data2);
         self::assertArrayHasKey('success', $result);
 
-        $result = $this->gongmall->employee->getContractStatusV2($data2);
+        $result = $this->gongmall->employee->getContractStatusByContractId($data2);
         self::assertArrayHasKey('success', $result);
 
         // 修改员工银行卡
         $data3 = $data2;
-        $data3['oldBankName'] = '工商银行';
-        $data3['newBankName'] = '农业银行';
-        $data3['oldBankAccount'] = '6212253202006079587';
-        $data3['newBankAccount'] = '6212253202006079587';
-        $result = $this->gongmall->employee->syncBankAccount($data3);
+        $data3['bankAccountNo'] = '6212253202006079587';
+        $result = $this->gongmall->employee->addBankAccount($data3);
+
+        self::assertArrayHasKey('success', $result);
+        self::assertArrayHasKey('errorCode', $result);
+
+        // 员工解除签署
+        $data4['identity'] = $data['idNumber'];
+        $result = $this->gongmall->employee->deleteContract($data4);
+
+        self::assertArrayHasKey('success', $result);
+        self::assertArrayHasKey('errorCode', $result);
+
+        // 更新员工默认手机号或者账号
+        $data5['name'] = '新姓名';
+        $data5['mobile'] = '1388888888';
+        $data5['identity'] = $data['idNumber'];
+        $result = $this->gongmall->employee->updateEmployee($data5);
 
         self::assertArrayHasKey('success', $result);
         self::assertArrayHasKey('errorCode', $result);
     }
 
     /**
-     * Withdraw Tests.
+     * Merchant Tests.
+     *
+     * @throws \JsonException
      */
-    public function testWithdraw(): void
+    public function testMerchant(): void
     {
-        $data = $this->data;
-        $data['bankAccount'] = '6212253202006079587';
-        $data['amount'] = 123.45;
-        $data['requestId'] = time();
-        $data['dateTime'] = date('YmdHis');
-
-        $result = $this->gongmall->withdraw->getTaxInfo($data);
-        self::assertArrayHasKey('success', $result);
-    }
-
-    /**
-     * Company Tests.
-     */
-    public function testCompany(): void
-    {
-        $result = $this->gongmall->company->getBalance();
+        $result = $this->gongmall->merchant->queryBalance();
         self::assertArrayHasKey('success', $result);
     }
 

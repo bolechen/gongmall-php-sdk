@@ -29,12 +29,8 @@ class GongmallServiceProvider implements ServiceProviderInterface
             return new Employee($pimple);
         };
 
-        $pimple['withdraw'] = function ($pimple) {
-            return new Withdraw($pimple);
-        };
-
-        $pimple['company'] = function ($pimple) {
-            return new Company($pimple);
+        $pimple['merchant'] = function ($pimple) {
+            return new Merchant($pimple);
         };
 
         $pimple['push'] = function ($pimple) {
