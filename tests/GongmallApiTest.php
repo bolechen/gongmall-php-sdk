@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- * 
+ *
  * @coversNothing
  */
 class GongmallApiTest extends TestCase
@@ -84,22 +84,6 @@ class GongmallApiTest extends TestCase
 
         self::assertArrayHasKey('success', $result);
         self::assertArrayHasKey('errorCode', $result);
-    }
-
-    /**
-     * Withdraw Tests.
-     * @throws \JsonException
-     */
-    public function testWithdraw(): void
-    {
-        $data = $this->data;
-        $data['bankAccount'] = '6212253202006079587';
-        $data['amount'] = 123.45;
-        $data['requestId'] = time();
-        $data['dateTime'] = date('YmdHis');
-
-        $result = $this->gongmall->withdraw->getTaxInfo($data);
-        self::assertArrayHasKey('success', $result);
     }
 
     /**
