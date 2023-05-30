@@ -27,46 +27,44 @@ class Employee extends Api
     }
 
     /**
-     * 查询电签结果（废弃）.
+     * 通过合同模板id查询电签结果.
      *
-     * @see   https://opendoc.gongmall.com/dian-qian-he-tong/cha-xun-dian-qian-jie-guo.html
+     * @see https://opendoc.gongmall.com/merchant/dian-qian-he-tong/dian-qian-jie-guo-cha-xun-merchant.html
      *
      * @param array $params
-     *
      * @return array
-     *
-     * @deprecated  官方标记为已废弃，使用 getContractStatusV2 替代
+     * @throws \JsonException
      */
     public function getContractStatus(array $params): array
     {
-        return $this->request('/api/employee/getContractStatus', $params);
+        return $this->request('/api/merchant/employee/getContractStatus', $params);
     }
 
     /**
-     * 查询电签结果.
+     * 通过合同id查询电签结果.
      *
-     * @see   https://opendoc.gongmall.com/dian-qian-he-tong/cha-xun-dian-qian-jie-guo-v2.html
+     * @see https://opendoc.gongmall.com/merchant/dian-qian-he-tong/get-contract-status-merchant.html
      *
      * @param array $params
-     *
      * @return array
+     * @throws \JsonException
      */
-    public function getContractStatusV2(array $params): array
+    public function getContractStatusByContractId(array $params): array
     {
-        return $this->request('/api/employee/getContractStatusV2', $params);
+        return $this->request('/api/merchant/employee/getContractStatusByContractId', $params);
     }
 
     /**
-     * 修改员工银行卡
+     * 员工添加银行卡账号.
      *
-     * @see   https://opendoc.gongmall.com/shi-shi-ti-xian/xiu-gai-yin-hang-ka.html
+     * @see https://opendoc.gongmall.com/merchant/dian-qian-he-tong/add-employee-bank-account.html
      *
      * @param array $params
-     *
      * @return array
+     * @throws \JsonException
      */
-    public function syncBankAccount(array $params): array
+    public function addBankAccount(array $params): array
     {
-        return $this->request('/api/employee/v2/syncBankAccount', $params);
+        return $this->request('/api/merchant/employee/addBankAccount', $params);
     }
 }

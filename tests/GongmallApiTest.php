@@ -56,16 +56,13 @@ class GongmallApiTest extends TestCase
         $result = $this->gongmall->employee->getContractStatus($data2);
         self::assertArrayHasKey('success', $result);
 
-        $result = $this->gongmall->employee->getContractStatusV2($data2);
+        $result = $this->gongmall->employee->getContractStatusByContractId($data2);
         self::assertArrayHasKey('success', $result);
 
         // 修改员工银行卡
         $data3 = $data2;
-        $data3['oldBankName'] = '工商银行';
-        $data3['newBankName'] = '农业银行';
-        $data3['oldBankAccount'] = '6212253202006079587';
-        $data3['newBankAccount'] = '6212253202006079587';
-        $result = $this->gongmall->employee->syncBankAccount($data3);
+        $data3['bankAccountNo'] = '6212253202006079587';
+        $result = $this->gongmall->employee->addBankAccount($data3);
 
         self::assertArrayHasKey('success', $result);
         self::assertArrayHasKey('errorCode', $result);
