@@ -15,12 +15,13 @@ class Company extends Api
     /**
      * 查询企业当前余额.
      *
-     * @see   https://opendoc.gongmall.com/shi-shi-ti-xian/cha-xun-qi-ye-yu-e.html
+     * @see https://opendoc.gongmall.com/merchant/merchant-account/cha-xun-qi-ye-yu-e-merchant.html
      *
      * @return array
+     * @throws \JsonException
      */
-    public function getBalance(): array
+    public function queryBalance(): array
     {
-        return $this->request('/api/company/getBalance');
+        return $this->request('/api/merchant/queryBalance');
     }
 }

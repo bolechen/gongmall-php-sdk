@@ -20,6 +20,7 @@ class Withdraw extends Api
      * @param array $params
      *
      * @return array
+     * @throws \JsonException
      */
     public function getTaxInfo(array $params): array
     {

@@ -18,7 +18,6 @@ class Employee extends Api
      * @see   https://opendoc.gongmall.com/dian-qian-he-tong/jie-ru-zhi-nan.html
      *
      * @param array $params
-     *
      * @return string
      */
     public function getContractUrl(array $params): string
@@ -32,8 +31,8 @@ class Employee extends Api
      * @see https://opendoc.gongmall.com/merchant/dian-qian-he-tong/dian-qian-jie-guo-cha-xun-merchant.html
      *
      * @param array $params
-     * @return array
      * @throws \JsonException
+     * @return array
      */
     public function getContractStatus(array $params): array
     {
@@ -46,8 +45,8 @@ class Employee extends Api
      * @see https://opendoc.gongmall.com/merchant/dian-qian-he-tong/get-contract-status-merchant.html
      *
      * @param array $params
-     * @return array
      * @throws \JsonException
+     * @return array
      */
     public function getContractStatusByContractId(array $params): array
     {
@@ -60,11 +59,39 @@ class Employee extends Api
      * @see https://opendoc.gongmall.com/merchant/dian-qian-he-tong/add-employee-bank-account.html
      *
      * @param array $params
-     * @return array
      * @throws \JsonException
+     * @return array
      */
     public function addBankAccount(array $params): array
     {
         return $this->request('/api/merchant/employee/addBankAccount', $params);
+    }
+
+    /**
+     * 员工解除签署.
+     *
+     * @see https://opendoc.gongmall.com/merchant/dian-qian-he-tong/delete-employee-merchant.html
+     *
+     * @param array $params
+     * @throws \JsonException
+     * @return array
+     */
+    public function deleteContract(array $params): array
+    {
+        return $this->request('/api/merchant/employee/deleteContract', $params);
+    }
+
+    /**
+     * 更新员工默认手机号或者账号.
+     *
+     * @see https://opendoc.gongmall.com/merchant/dian-qian-he-tong/gen-xin-account-merchant.html
+     *
+     * @param array $params
+     * @throws \JsonException
+     * @return array
+     */
+    public function updateEmployee(array $params): array
+    {
+        return $this->request('/api/merchant/employee/updateEmployee', $params);
     }
 }

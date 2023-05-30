@@ -15,6 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
+ * 
  * @coversNothing
  */
 class GongmallApiTest extends TestCase
@@ -41,6 +42,7 @@ class GongmallApiTest extends TestCase
 
     /**
      * Employee Tests.
+     * @throws \JsonException
      */
     public function testEmployee(): void
     {
@@ -66,10 +68,27 @@ class GongmallApiTest extends TestCase
 
         self::assertArrayHasKey('success', $result);
         self::assertArrayHasKey('errorCode', $result);
+
+        // 员工解除签署
+        $data4['identity'] = $data['idNumber'];
+        $result = $this->gongmall->employee->deleteContract($data4);
+
+        self::assertArrayHasKey('success', $result);
+        self::assertArrayHasKey('errorCode', $result);
+
+        // 更新员工默认手机号或者账号
+        $data5['name'] = '新姓名';
+        $data5['mobile'] = '1388888888';
+        $data5['identity'] = $data['idNumber'];
+        $result = $this->gongmall->employee->updateEmployee($data5);
+
+        self::assertArrayHasKey('success', $result);
+        self::assertArrayHasKey('errorCode', $result);
     }
 
     /**
      * Withdraw Tests.
+     * @throws \JsonException
      */
     public function testWithdraw(): void
     {
@@ -85,10 +104,11 @@ class GongmallApiTest extends TestCase
 
     /**
      * Company Tests.
+     * @throws \JsonException
      */
     public function testCompany(): void
     {
-        $result = $this->gongmall->company->getBalance();
+        $result = $this->gongmall->company->queryBalance();
         self::assertArrayHasKey('success', $result);
     }
 

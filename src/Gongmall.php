@@ -30,11 +30,11 @@ class Gongmall extends Foundation
      * API 请求
      *
      * @param string $uri
-     * @param array  $params
+     * @param array $params
      *
      * @return array
      */
-    public function request(string $uri, $params = []): array
+    public function request(string $uri, array $params = []): array
     {
         return $this->api->request($uri, $params);
     }
